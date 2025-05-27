@@ -1,0 +1,35 @@
+{
+  "kind": "singleType",
+  "collectionName": "page_d_accueils",
+  "info": {
+    "singularName": "page-d-accueil",
+    "pluralName": "page-d-accueils",
+    "displayName": "Page d'accueil",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "hero_image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "hero_text": {
+      "type": "string"
+    },
+    "meta_title": {
+      "type": "string"
+    },
+    "meta_description": {
+      "type": "string"
+    }
+  }
+}
