@@ -15,7 +15,7 @@ export default function Hero({ title, image }) {
 
    const imageUrl = `${process.env.NEXT_PUBLIC_STRAPI_URL}${image[0]?.url}`;
    return (
-      <div
+      <section
          className="flex flex-col items-center justify-center bg-cover bg-center"
          style={{
             minHeight: `calc(100vh - ${headerHeight}px)`,
@@ -37,6 +37,6 @@ export default function Hero({ title, image }) {
                </Button>
             </div>
          </div>
-      </div>
+      </section>
    );
 }

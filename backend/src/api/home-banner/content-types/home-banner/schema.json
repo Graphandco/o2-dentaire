@@ -1,11 +1,10 @@
 {
-  "kind": "collectionType",
-  "collectionName": "home_cards",
+  "kind": "singleType",
+  "collectionName": "home_banners",
   "info": {
-    "singularName": "home-card",
-    "pluralName": "home-cards",
-    "displayName": "Cartes accueil",
-    "description": ""
+    "singularName": "home-banner",
+    "pluralName": "home-banners",
+    "displayName": "Bannière d'accueil"
   },
   "options": {
     "draftAndPublish": true
@@ -14,13 +13,12 @@
     "title": {
       "type": "string"
     },
-    "description": {
-      "type": "text"
-    },
     "image": {
       "allowedTypes": [
         "images",
-        "files"
+        "files",
+        "videos",
+        "audios"
       ],
       "type": "media",
       "multiple": false
