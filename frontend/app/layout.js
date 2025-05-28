@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono, Lato } from "next/font/google";
 import "./globals.css";
-import HeaderLogo from "@/components/Header/HeaderLogo";
+import HeaderWrapper from "@/components/Header/HeaderWrapper";
 
 const geistSans = Geist({
    variable: "--font-geist-sans",
@@ -27,12 +27,8 @@ export default function RootLayout({ children }) {
    return (
       <html lang="en">
          <body className={`${lato.variable}`}>
-            <header id="header" className="bg-primary">
-               <div className="wrapper py-3">
-                  <HeaderLogo />
-               </div>
-            </header>
-            {children}
+            <HeaderWrapper />
+            <main>{children}</main>
          </body>
       </html>
    );

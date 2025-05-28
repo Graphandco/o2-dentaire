@@ -5,14 +5,15 @@ export default function HomePartenaires({ partenaires }) {
       <section className="py-20">
          <div className="wrapper">
             <h2 className="text-4xl font-bold">Nos partenaires</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+            <div className="flex flex-wrap items-center gap-10">
                {partenaires.map((partenaire) => (
                   <a href={partenaire.link} target="_blank" key={partenaire.id}>
                      <Image
                         src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${partenaire.image.url}`}
-                        alt={partenaire.name}
+                        alt="Logo de l'entreprise"
                         width={300}
                         height={200}
+                        className="w-auto h-10 object-contain"
                      />
                   </a>
                ))}
