@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "home_cards",
+  "info": {
+    "singularName": "home-card",
+    "pluralName": "home-cards",
+    "displayName": "Cartes accueil",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "icon": {
+      "type": "customField",
+      "customField": "plugin::material-symbols.icon"
+    }
+  }
+}
