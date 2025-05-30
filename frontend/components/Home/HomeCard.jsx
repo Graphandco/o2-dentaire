@@ -4,8 +4,8 @@ import Image from "next/image";
 
 export default function HomeCard({ card }) {
    return (
-      <article className="p-5 outline-2 outline-primary outline-offset-2 rounded-xl flex flex-col items-center gap-3">
-         <div className="text-center text-xl font-bold text-black min-h-12">
+      <article className="p-5 bg-white rounded-xl flex flex-col items-center gap-3">
+         <div className="text-center text-xl font-black text-black min-h-14">
             {card.title}
          </div>
          <Image

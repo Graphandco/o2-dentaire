@@ -11,7 +11,7 @@ export default function HomeBanner({ banner }) {
          }}
          className="relative after:absolute after:inset-0 after:bg-primary/70 after:z-0"
       >
-         <div className="wrapper relative z-10 text-white py-36">
+         <div className="wrapper relative z-10 text-white text-center py-36">
             <h2 className="text-5xl font-black">{title}</h2>
          </div>
       </section>

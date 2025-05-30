@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono, Lato } from "next/font/google";
 import "./globals.css";
 import HeaderWrapper from "@/components/Header/HeaderWrapper";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
    variable: "--font-geist-sans",
@@ -26,9 +27,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
    return (
       <html lang="en">
-         <body className={`${lato.variable}`}>
+         <body className={`${lato.variable} min-h-screen flex flex-col`}>
             <HeaderWrapper />
-            <main>{children}</main>
+            <main className="flex-1">{children}</main>
+            <Footer />
          </body>
       </html>
    );
