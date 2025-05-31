@@ -1,0 +1,24 @@
+{
+  "kind": "singleType",
+  "collectionName": "galeries",
+  "info": {
+    "singularName": "galerie",
+    "pluralName": "galeries",
+    "displayName": "Galerie",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "realisations": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    }
+  }
+}

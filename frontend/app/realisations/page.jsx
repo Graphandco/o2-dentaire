@@ -1,9 +1,16 @@
 import PageHeader from "@/components/PageHeader";
+import ImageModal from "@/components/Realisations";
+import { getStrapiUnique } from "@/actions/getStrapiUnique";
+import Realisations from "@/components/Realisations";
 
-export default function RealisationsPage() {
+export default async function RealisationsPage() {
+   const galerie = await getStrapiUnique({ type: "galerie" });
+   const { realisations } = galerie;
+
    return (
-      <>
+      <div className="">
          <PageHeader title="Nos réalisations" />
-      </>
+         <Realisations images={realisations} />
+      </div>
    );
 }

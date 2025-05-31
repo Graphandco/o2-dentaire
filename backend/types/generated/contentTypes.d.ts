@@ -373,6 +373,35 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiGalerieGalerie extends Struct.SingleTypeSchema {
+  collectionName: 'galeries';
+  info: {
+    description: '';
+    displayName: 'Galerie';
+    pluralName: 'galeries';
+    singularName: 'galerie';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::galerie.galerie'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    realisations: Schema.Attribute.Media<'images' | 'files', true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHomeBannerHomeBanner extends Struct.SingleTypeSchema {
   collectionName: 'home_banners';
   info: {
@@ -1006,6 +1035,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::galerie.galerie': ApiGalerieGalerie;
       'api::home-banner.home-banner': ApiHomeBannerHomeBanner;
       'api::home-card.home-card': ApiHomeCardHomeCard;
       'api::page-d-accueil.page-d-accueil': ApiPageDAccueilPageDAccueil;

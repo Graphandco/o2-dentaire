@@ -2,7 +2,6 @@
 
 export async function getStrapiUnique({ type }) {
    let url = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/${type}?populate=*`;
-   //    console.log(url);
 
    const res = await fetch(url, { cache: "no-store" });
 

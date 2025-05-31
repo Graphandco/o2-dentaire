@@ -5,7 +5,7 @@ export default function HeaderWrapper() {
    return (
       <header
          id="header"
-         className="fixed top-5 w-full flex justify-center items-center gap-4"
+         className="fixed z-10 top-5 w-full flex justify-center items-center gap-4"
       >
          <HeaderLogo />
          <HeaderMenu />

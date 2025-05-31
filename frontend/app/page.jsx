@@ -6,12 +6,8 @@ import HomePartenaires from "@/components/Home/HomePartenaires";
 import Hero from "@/components/Home/Hero";
 import HomeCards from "@/components/Home/HomeCards";
 
-const hero = await getStrapiUnique({ type: "page-d-accueil" });
-const cards = await getStrapiCollections("home-cards");
-const banner = await getStrapiUnique({ type: "home-banner" });
-const partenaires = await getStrapiCollections("partenaires");
-
 export async function generateMetadata() {
+   const hero = await getStrapiUnique({ type: "page-d-accueil" });
    return {
       title: hero.meta_title || "Accueil",
       description: (hero.meta_description || "")
@@ -21,6 +17,10 @@ export async function generateMetadata() {
 }
 
 export default async function Home() {
+   const hero = await getStrapiUnique({ type: "page-d-accueil" });
+   const cards = await getStrapiCollections("home-cards");
+   const banner = await getStrapiUnique({ type: "home-banner" });
+   const partenaires = await getStrapiCollections("partenaires");
    return (
       <>
          {/* <Hero title={hero_text} image={hero_image} /> */}
