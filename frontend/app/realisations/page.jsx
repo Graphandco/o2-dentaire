@@ -8,9 +8,9 @@ export default async function RealisationsPage() {
    const { realisations } = galerie;
 
    return (
-      <div className="">
-         <PageHeader title="Nos réalisations" />
+      <>
+         {/* <PageHeader title="Nos réalisations" /> */}
          <Realisations images={realisations} />
-      </div>
+      </>
    );
 }

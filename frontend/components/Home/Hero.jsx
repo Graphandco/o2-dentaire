@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
@@ -8,15 +7,20 @@ export default function Hero({ hero }) {
    const { hero_text, hero_image, meta_title, meta_description } = hero;
    const imageUrl = `${process.env.NEXT_PUBLIC_STRAPI_URL}${hero_image[0]?.url}`;
 
+   const [headerHeight, setHeaderHeight] = useState(0);
+   useEffect(() => {
+      const header = document.getElementById("header");
+      if (header) {
+         setHeaderHeight(header.offsetHeight);
+      }
+   }, []);
+
    return (
       <section
-         className="grid grid-cols-1 md:grid-cols-2 gap-7 md:min-h-[100dvh] p-7 my-24 md:my-0"
-         //  style={{
-         //     minHeight: `calc(100vh - ${headerHeight}px)`,
-         //      backgroundImage: `url(${imageUrl})`,
-         //      backgroundSize: "cover",
-         //      backgroundPosition: "center",
-         //  }}
+         className="grid grid-cols-1 md:grid-cols-2 gap-7 p-7 my-12 md:my-0"
+         style={{
+            minHeight: `calc(100vh - ${headerHeight}px)`,
+         }}
       >
          <div className="flex flex-col justify-center gap-6">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold w-2xl max-w-full bg-radius p-5">
