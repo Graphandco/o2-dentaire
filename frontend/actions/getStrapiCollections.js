@@ -1,14 +1,14 @@
 "use server";
 
-// export async function getStrapiCollectionBySlug(slug) {
-// 	const url = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/actualites?filters[slug][$eq]=${slug}&populate=*`;
-// 	const res = await fetch(url, { cache: "no-store" }); // SSR
+export async function getStrapiPageBySlug(slug) {
+   const url = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/legals?filters[slug][$eq]=${slug}&populate=*`;
+   const res = await fetch(url, { cache: "no-store" }); // SSR
 
-// 	if (!res.ok) throw new Error("Erreur Strapi");
+   if (!res.ok) throw new Error("Erreur Strapi");
 
-// 	const json = await res.json();
-// 	return json.data[0]; // ou null si non trouvé
-// }
+   const json = await res.json();
+   return json.data[0]; // ou null si non trouvé
+}
 
 export async function getStrapiCollections(collection) {
    let url = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/${collection}?populate=*`;

@@ -10,6 +10,7 @@ export default function Footer() {
                <Link href="/politique-de-confidentialite">
                   Politique de confidentialité
                </Link>
+               <Link href="/cgv">CGV</Link>
             </nav>
             <Link
                className="flex itels-center gap-2"

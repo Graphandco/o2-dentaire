@@ -373,6 +373,38 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiContactContact extends Struct.CollectionTypeSchema {
+  collectionName: 'contacts';
+  info: {
+    displayName: 'Contacts';
+    pluralName: 'contacts';
+    singularName: 'contact';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::contact.contact'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    phone: Schema.Attribute.String;
+    photo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    publishedAt: Schema.Attribute.DateTime;
+    secteur: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiGalerieGalerie extends Struct.SingleTypeSchema {
   collectionName: 'galeries';
   info: {
@@ -455,6 +487,34 @@ export interface ApiHomeCardHomeCard extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiLegalLegal extends Struct.CollectionTypeSchema {
+  collectionName: 'legals';
+  info: {
+    description: '';
+    displayName: 'Pages l\u00E9gales';
+    pluralName: 'legals';
+    singularName: 'legal';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Schema.Attribute.RichText;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::legal.legal'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'>;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1035,9 +1095,11 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::contact.contact': ApiContactContact;
       'api::galerie.galerie': ApiGalerieGalerie;
       'api::home-banner.home-banner': ApiHomeBannerHomeBanner;
       'api::home-card.home-card': ApiHomeCardHomeCard;
+      'api::legal.legal': ApiLegalLegal;
       'api::page-d-accueil.page-d-accueil': ApiPageDAccueilPageDAccueil;
       'api::partenaire.partenaire': ApiPartenairePartenaire;
       'plugin::content-releases.release': PluginContentReleasesRelease;
