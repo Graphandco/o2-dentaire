@@ -8,7 +8,7 @@ export default async function ContactPage() {
 
    return (
       <div className="mt-20 bg-radius mx-7 py-15 flex flex-col gap-10">
-         <h1>Contact</h1>
+         <h1>Nous contacter</h1>
          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] items-center gap-10">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
                {contacts.map((contact) => (
