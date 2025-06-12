@@ -46,19 +46,17 @@ export default function HeaderMenu() {
                      transition={{ duration: 0.2 }}
                      className="fixed inset-0 bg-black/90 text-white flex flex-col items-center justify-center space-y-6"
                   >
-                     <a href="/" onClick={toggleMenu} className="text-2xl">
-                        Accueil
-                     </a>
-                     <a href="/about" onClick={toggleMenu} className="text-2xl">
-                        À propos
-                     </a>
-                     <a
-                        href="/contact"
-                        onClick={toggleMenu}
-                        className="text-2xl"
-                     >
-                        Contact
-                     </a>
+                     {navLinks.map((link) => (
+                        <Link
+                           key={link.href}
+                           onClick={toggleMenu}
+                           href={link.href}
+                           className="text-2xl"
+                        >
+                           {link.title}
+                        </Link>
+                     ))}
+
                      <div
                         className="absolute top-7 right-7"
                         onClick={toggleMenu}

@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Footer() {
    return (
       <footer className="bg-primary">
-         <div className="wrapper py-5 flex items-center justify-between">
+         <div className="wrapper py-5 flex flex-wrap items-center justify-between">
             <nav className="flex gap-4">
                <Link href="/mentions-legales">Mentions légales</Link>
                <Link href="/politique-de-confidentialite">
