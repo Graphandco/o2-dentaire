@@ -1,17 +1,15 @@
-import { getStrapiPageBySlug } from "@/actions/getStrapiCollections";
-import { marked } from "marked";
+import { getWordpressContent } from "@/actions/getWordpressContent";
 
 export default async function PolitiqueDeConfidentialite() {
-   const politique = await getStrapiPageBySlug("politique-de-confidentialite");
+   const data = await getWordpressContent({ id: 86, type: "page" });
 
    return (
       <div className="wrapper prose mt-20">
-         <h1>{politique.title}</h1>
+         <h1>{data.title}</h1>
 
          <div
-            dangerouslySetInnerHTML={{
-               __html: marked.parse(politique.content || ""),
-            }}
+            className="prose mb-5"
+            dangerouslySetInnerHTML={{ __html: data.content }}
          />
       </div>
    );

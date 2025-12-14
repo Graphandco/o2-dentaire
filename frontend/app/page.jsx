@@ -1,33 +1,46 @@
-import { getStrapiUnique } from "@/actions/getStrapiUnique";
-import { getStrapiCollections } from "@/actions/getStrapiCollections";
 import HomeBanner from "@/components/Home/HomeBanner";
 import HomePartenaires from "@/components/Home/HomePartenaires";
+import { getWordpressContent } from "@/actions/getWordpressContent";
 
 import Hero from "@/components/Home/Hero";
 import HomeCards from "@/components/Home/HomeCards";
 
+export const revalidate = Number(process.env.REVALIDATE_TIME) || 300;
+
 export async function generateMetadata() {
-   const hero = await getStrapiUnique({ type: "page-d-accueil" });
+   const pageData = await getWordpressContent({ id: 2, type: "page" });
+   const cleanDescription = (
+      pageData.seo.metaDesc ||
+      "Cabinet de soins dentaires à Colmar - O2 Dentaire"
+   )
+      .replace(/[#*]/g, "")
+      .slice(0, 160);
+
    return {
-      title: hero.meta_title || "Accueil",
-      description: (hero.meta_description || "")
-         .replace(/[#*]/g, "")
-         .slice(0, 160),
+      title:
+         pageData.seo.title ||
+         "Cabinet de soins médicaux à Colmar - Infirmière 68000",
+      description: cleanDescription,
+      openGraph: {
+         title:
+            pageData.seo.title ||
+            "Cabinet de soins médicaux à Colmar - Infirmière 68000",
+         description: cleanDescription,
+         url: "https://infirmiere68000.fr",
+         type: "website",
+         siteName: "Infirmière 68000",
+      },
    };
 }
 
 export default async function Home() {
-   const hero = await getStrapiUnique({ type: "page-d-accueil" });
-   const cards = await getStrapiCollections("home-cards");
-   const banner = await getStrapiUnique({ type: "home-banner" });
-   const partenaires = await getStrapiCollections("partenaires");
+   const data = await getWordpressContent({ id: 2, type: "page" });
    return (
       <>
-         {/* <Hero title={hero_text} image={hero_image} /> */}
-         <Hero hero={hero} />
-         <HomeCards cards={cards} />
-         <HomeBanner banner={banner} />
-         <HomePartenaires partenaires={partenaires} />
+         <Hero data={data} />
+         <HomeCards data={data} />
+         <HomeBanner data={data} />
+         <HomePartenaires data={data} />
       </>
    );
 }

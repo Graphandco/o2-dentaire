@@ -8,12 +8,7 @@ export default function HomeCard({ card }) {
          <div className="text-center text-xl font-black text-black min-h-14">
             {card.title}
          </div>
-         <Image
-            src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${card.image.url}`}
-            alt={card.title}
-            width={50}
-            height={50}
-         />
+         <Image src={card.image.url} alt={card.title} width={50} height={50} />
          <div className="text-neutral-500">{card.description}</div>
       </article>
    );

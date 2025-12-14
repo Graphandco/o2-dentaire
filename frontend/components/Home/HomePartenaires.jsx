@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function HomePartenaires({ partenaires }) {
+export default function HomePartenaires({ data }) {
    return (
       <section className="py-10 bg-radius my-16 mx-7">
          <div className="wrapper grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10">
@@ -12,10 +12,10 @@ export default function HomePartenaires({ partenaires }) {
                </p>
             </div>
             <div className="flex flex-wrap items-center gap-10">
-               {partenaires.map((partenaire) => (
-                  <a href={partenaire.link} target="_blank" key={partenaire.id}>
+               {data.acf.partenaires.map((partenaire, index) => (
+                  <a href={partenaire.link} target="_blank" key={index}>
                      <Image
-                        src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${partenaire.image.url}`}
+                        src={partenaire.image.url}
                         alt="Logo de l'entreprise"
                         width={300}
                         height={200}

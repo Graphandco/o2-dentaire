@@ -1,16 +1,13 @@
-import PageHeader from "@/components/PageHeader";
-import ImageModal from "@/components/Realisations";
-import { getStrapiUnique } from "@/actions/getStrapiUnique";
 import Realisations from "@/components/Realisations";
+import { getWordpressContent } from "@/actions/getWordpressContent";
 
 export default async function RealisationsPage() {
-   const galerie = await getStrapiUnique({ type: "galerie" });
-   const { realisations } = galerie;
+   const data = await getWordpressContent({ id: 47, type: "page" });
 
    return (
       <>
          {/* <PageHeader title="Nos réalisations" /> */}
-         <Realisations images={realisations} />
+         <Realisations data={data} />
       </>
    );
 }
