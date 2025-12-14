@@ -3,6 +3,30 @@ import { getWordpressContent } from "@/actions/getWordpressContent";
 import ContactItem from "@/components/ContactItem";
 import { ArrowUpRight } from "lucide-react";
 
+export const revalidate = Number(process.env.REVALIDATE_TIME) || 300;
+
+export async function generateMetadata() {
+   const pageData = await getWordpressContent({ id: 64, type: "page" });
+   const cleanDescription = (
+      pageData.seo.metaDesc ||
+      "Contactez O² Dentaire, votre cabinet de prothésiste dentaire à Colmar"
+   )
+      .replace(/[#*]/g, "")
+      .slice(0, 160);
+
+   return {
+      title: pageData.seo.title || `${pageData.title} - O² Dentaire`,
+      description: cleanDescription,
+      openGraph: {
+         title: pageData.seo.title || `${pageData.title} - O² Dentaire`,
+         description: cleanDescription,
+         url: "https://o2-dentaire.fr/contact",
+         type: "website",
+         siteName: "O2 Dentaire",
+      },
+   };
+}
+
 export default async function ContactPage() {
    const data = await getWordpressContent({ id: 64, type: "page" });
 

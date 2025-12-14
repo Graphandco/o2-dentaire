@@ -13,7 +13,12 @@ export default function HomePartenaires({ data }) {
             </div>
             <div className="flex flex-wrap items-center gap-10">
                {data.acf.partenaires.map((partenaire, index) => (
-                  <a href={partenaire.link} target="_blank" key={index}>
+                  <a
+                     href={partenaire.link}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     key={index}
+                  >
                      <Image
                         src={partenaire.image.url}
                         alt="Logo de l'entreprise"

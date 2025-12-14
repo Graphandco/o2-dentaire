@@ -11,7 +11,7 @@ export async function generateMetadata() {
    const pageData = await getWordpressContent({ id: 2, type: "page" });
    const cleanDescription = (
       pageData.seo.metaDesc ||
-      "Cabinet de soins dentaires à Colmar - O2 Dentaire"
+      "L’expertise O² Dentaire au sein de votre cabinet de prothésiste dentaire"
    )
       .replace(/[#*]/g, "")
       .slice(0, 160);
@@ -19,16 +19,16 @@ export async function generateMetadata() {
    return {
       title:
          pageData.seo.title ||
-         "Cabinet de soins médicaux à Colmar - Infirmière 68000",
+         "L’expertise O² Dentaire au sein de votre cabinet de prothésiste dentaire",
       description: cleanDescription,
       openGraph: {
          title:
             pageData.seo.title ||
-            "Cabinet de soins médicaux à Colmar - Infirmière 68000",
+            "L’expertise O² Dentaire au sein de votre cabinet de prothésiste dentaire",
          description: cleanDescription,
-         url: "https://infirmiere68000.fr",
+         url: "https://o2-dentaire.fr",
          type: "website",
-         siteName: "Infirmière 68000",
+         siteName: "O2 Dentaire",
       },
    };
 }

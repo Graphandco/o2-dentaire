@@ -13,9 +13,10 @@ export default function Footer() {
                <Link href="/cgv">CGV</Link>
             </nav>
             <Link
-               className="flex itelm-center gap-2"
+               className="flex items-center gap-2"
                href="https://graphandco.com"
                target="_blank"
+               rel="noopener noreferrer"
             >
                <Image
                   src="/logo-graphandco.svg"
