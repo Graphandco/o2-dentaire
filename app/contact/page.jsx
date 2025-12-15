@@ -3,7 +3,10 @@ import { getWordpressContent } from "@/actions/getWordpressContent";
 import ContactItem from "@/components/ContactItem";
 import { ArrowUpRight } from "lucide-react";
 
-export const revalidate = Number(process.env.REVALIDATE_TIME) || 300;
+export const revalidate = Number.parseInt(
+   process.env.REVALIDATE_TIME || "300",
+   10
+);
 
 export async function generateMetadata() {
    const pageData = await getWordpressContent({ id: 64, type: "page" });
