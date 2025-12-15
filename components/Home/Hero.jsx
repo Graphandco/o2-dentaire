@@ -8,10 +8,29 @@ export default function Hero({ data }) {
 
    const [headerHeight, setHeaderHeight] = useState(0);
    useEffect(() => {
+      const updateHeaderHeight = () => {
+         const header = document.getElementById("header");
+         if (header) {
+            setHeaderHeight(header.offsetHeight);
+         }
+      };
+
+      // Mise à jour initiale
+      updateHeaderHeight();
+
+      // Observer les changements de taille du header
       const header = document.getElementById("header");
-      if (header) {
-         setHeaderHeight(header.offsetHeight);
-      }
+      if (!header) return;
+
+      const resizeObserver = new ResizeObserver(() => {
+         updateHeaderHeight();
+      });
+
+      resizeObserver.observe(header);
+
+      return () => {
+         resizeObserver.disconnect();
+      };
    }, []);
 
    return (

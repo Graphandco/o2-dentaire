@@ -16,12 +16,19 @@ export const ImageModalScroll = () => {
    useEffect(() => {
       if (!isOpen) return;
 
+      let timeoutId;
       const handleScroll = () => {
-         setOpen(false);
+         clearTimeout(timeoutId);
+         timeoutId = setTimeout(() => {
+            setOpen(false);
+         }, 100); // Debounce de 100ms pour éviter trop d'appels
       };
 
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      return () => {
+         clearTimeout(timeoutId);
+         window.removeEventListener("scroll", handleScroll);
+      };
    }, [isOpen]);
 
    return (
