@@ -5,7 +5,7 @@ const nextConfig = {
          {
             protocol: "https",
             hostname: "admin-o2dentaire.graphandco.com",
-            pathname: "/uploads/**",
+            pathname: "/wp-content/uploads/**",
          },
          {
             protocol: "http",
