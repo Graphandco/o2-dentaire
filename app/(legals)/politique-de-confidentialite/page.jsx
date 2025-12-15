@@ -1,6 +1,6 @@
 import { getWordpressContent } from "@/actions/getWordpressContent";
 
-export const revalidate = Number.parseInt(process.env.REVALIDATE_TIME || '300', 10);
+export const revalidate = 300;
 
 export async function generateMetadata() {
    const pageData = await getWordpressContent({ id: 86, type: "page" });

@@ -5,10 +5,7 @@ import { getWordpressContent } from "@/actions/getWordpressContent";
 import Hero from "@/components/Home/Hero";
 import HomeCards from "@/components/Home/HomeCards";
 
-export const revalidate = Number.parseInt(
-   process.env.REVALIDATE_TIME || "300",
-   10
-);
+export const revalidate = 300;
 
 export async function generateMetadata() {
    const pageData = await getWordpressContent({ id: 2, type: "page" });
