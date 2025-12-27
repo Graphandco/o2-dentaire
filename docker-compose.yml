@@ -1,0 +1,21 @@
+services:
+   app:
+      container_name: o2-dentaire
+      build:
+         context: .
+         dockerfile: Dockerfile
+         args:
+            NEXT_PUBLIC_WP_GRAPHQL: ${NEXT_PUBLIC_WP_GRAPHQL}
+            NEXT_PUBLIC_WP_REST: ${NEXT_PUBLIC_WP_REST}
+            REVALIDATE_TIME: ${REVALIDATE_TIME:-300}
+      restart: unless-stopped
+      ports:
+         - "3003:3003"
+      env_file:
+         - .env
+      networks:
+         - web-network
+
+networks:
+   web-network:
+      external: true
