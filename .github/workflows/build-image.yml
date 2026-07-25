@@ -37,4 +37,3 @@ jobs:
               build-args: |
                  NEXT_PUBLIC_WP_GRAPHQL=${{ vars.NEXT_PUBLIC_WP_GRAPHQL }}
                  NEXT_PUBLIC_WP_REST=${{ vars.NEXT_PUBLIC_WP_REST }}
-                 REVALIDATE_TIME=${{ vars.REVALIDATE_TIME }}
