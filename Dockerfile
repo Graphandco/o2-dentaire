@@ -1,5 +1,5 @@
 # Build stage
-FROM node:20-alpine AS builder
+FROM node:24-alpine AS builder
 
 WORKDIR /app
 
@@ -20,7 +20,7 @@ COPY . .
 RUN npm run build
 
 # Runtime stage — image minimale via output standalone
-FROM node:20-alpine AS runner
+FROM node:24-alpine AS runner
 
 RUN addgroup -S nodejs && adduser -S nextjs -G nodejs
 
